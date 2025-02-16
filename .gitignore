@@ -2,3 +2,4 @@
 Public/**
 vendor/**
 composer.lock
+Public/admin/assets/vendor/calendar/custom/google-view-calendar.js
