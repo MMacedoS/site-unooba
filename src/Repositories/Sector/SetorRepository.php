@@ -173,4 +173,18 @@ class SetorRepository implements ISetorRepository
         }
     }
 
+    public function active(int $id)
+    {
+        $stmt = $this->conn
+        ->prepare(
+            "UPDATE " . self::TABLE . " 
+             SET ativo = 1 
+             WHERE id = :id"
+        );
+
+        $updated = $stmt->execute([':id' => $id]);
+
+        return $updated;
+    }
+
 }

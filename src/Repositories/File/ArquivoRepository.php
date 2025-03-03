@@ -92,6 +92,47 @@ class ArquivoRepository implements IArquivoRepository {
         }
     }
 
+    public function createFilePDF($file, string $dir)
+    {
+        $data = uploadFile($dir, $file);
+    
+        $manipulation = $this->model->create($data);
+
+        if(is_null($file)) {
+            return null;
+        }
+        
+        try{
+            $stmt = $this->conn->prepare(
+                "INSERT INTO " . self::TABLE . "
+                    SET
+                        uuid = :uuid,
+                        nome_original = :original_name,
+                        ext_arquivo = :ext_archive,
+                        path = :archive
+                "
+            );
+
+            $create = $stmt->execute([
+                ':uuid' => $manipulation->uuid,
+                ':original_name' => $manipulation->nome_original,
+                ':ext_archive' => $manipulation->ext_arquivo,
+                ':archive' => $manipulation->path
+            ]);
+
+            if(is_null($create)){
+                return null;
+            }
+
+            $archiveFromDb = $this->findByUuid($manipulation->uuid);
+            return $archiveFromDb;
+        } catch(\Throwable $th){
+            return null;
+        } finally{
+            Database::getInstance()->closeConnection();
+        }
+    }
+
     public function update(array $data, string $dir, int $id){
         $file = $this->model->create($data);
 

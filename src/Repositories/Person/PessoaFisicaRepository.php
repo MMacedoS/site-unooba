@@ -54,43 +54,45 @@ class PessoaFisicaRepository implements IPessoaFisicaRepository {
     public function create(array $data)
     {
         $existingPerson = $this->findPessoaFisica($data);
+
         if (!is_null($existingPerson)) {
             return $existingPerson;
         }
-   
-        $pessoa_fisica = $this->model->create($data);
-        
+
         try {
+            $pessoa_fisica = $this->model->create($data);
+            
             $stmt = $this->conn->prepare(
                 "INSERT INTO " . self::TABLE . " 
                 SET 
                     uuid = :uuid,
                     usuario_id = :usuario_id,
                     nome = :nome,
-                    doc = :doc,
-                    tipo_doc = :tipo_doc,
-                    telefone = :telefone,
+                    nome_social = :nome_social,
+                    email = :email,
+                    data_nascimento = :data_nascimento,
+                    cpf = :cpf,
+                    rg = :rg,
                     nome_mae = :nome_mae,
                     nome_pai = :nome_pai,
-                    genero = :genero,
-                    endereco = :endereco,
-                    data_nascimento = :data_nascimento,
-                    email = :email"
+                    telefone = :telefone,
+                    endereco = :endereco
+                    "
             );
     
             $create = $stmt->execute([
                 ':uuid' => $pessoa_fisica->uuid,
                 ':usuario_id' => $pessoa_fisica->usuario_id,
                 ':nome' => $pessoa_fisica->nome,
-                ':doc' => $pessoa_fisica->doc,
-                ':tipo_doc' => $pessoa_fisica->tipo_doc,
-                ':telefone' => $pessoa_fisica->telefone,
+                ':nome_social' => $pessoa_fisica->nome_social,
+                ':email' => $pessoa_fisica->email,
+                ':data_nascimento' => $pessoa_fisica->data_nascimento,
                 ':nome_pai' => $pessoa_fisica->nome_pai,
                 ':nome_mae' => $pessoa_fisica->nome_mae,
-                ':genero' => $pessoa_fisica->genero,
-                ':data_nascimento' => $pessoa_fisica->data_nascimento,
+                ':telefone' => $pessoa_fisica->telefone,
+                ':rg' => $pessoa_fisica->rg,
                 ':endereco' => $pessoa_fisica->endereco,
-                ':email' => $pessoa_fisica->email
+                ':cpf' => $pessoa_fisica->cpf
             ]);
             
             if (!$create) {
@@ -124,34 +126,34 @@ class PessoaFisicaRepository implements IPessoaFisicaRepository {
             ->prepare(
                 "UPDATE " . self::TABLE . "
                     set 
+                    usuario_id = :usuario_id,
                     nome = :nome,
-                    doc = :doc,
-                    tipo_doc = :tipo_doc,
-                    telefone = :telefone,
-                    nome_mae = :nome_mae,
-                    nome_pai = :nome_pai,
-                    genero = :genero,
-                    endereco = :endereco,
-                    ativo = :ativo,
+                    nome_social = :nome_social,
                     email = :email,
                     data_nascimento = :data_nascimento,
+                    cpf = :cpf,
+                    rg = :rg,
+                    nome_mae = :nome_mae,
+                    nome_pai = :nome_pai,
+                    telefone = :telefone,
+                    endereco = :endereco,
                     updated_at = NOW()
                 WHERE id = :id"
             );
 
             $updated = $stmt->execute([
                 ':id' => $id,
+                ':usuario_id' => $pessoa_fisica->usuario_id,
                 ':nome' => $pessoa_fisica->nome,
-                ':doc' => $pessoa_fisica->doc,
-                ':tipo_doc' => $pessoa_fisica->tipo_doc,
+                ':nome_social' => $pessoa_fisica->nome_social,
+                ':email' => $pessoa_fisica->email,
+                ':data_nascimento' => $pessoa_fisica->data_nascimento,
                 ':nome_pai' => $pessoa_fisica->nome_pai,
                 ':nome_mae' => $pessoa_fisica->nome_mae,
-                ':genero' => $pessoa_fisica->genero,
                 ':telefone' => $pessoa_fisica->telefone,
+                ':rg' => $pessoa_fisica->rg,
                 ':endereco' => $pessoa_fisica->endereco,
-                ':ativo' => $pessoa_fisica->ativo,
-                ':data_nascimento' => $pessoa_fisica->data_nascimento,
-                ':email' => $pessoa_fisica->email
+                ':cpf' => $pessoa_fisica->cpf
             ]);
 
             if (!$updated) {        
@@ -178,9 +180,9 @@ class PessoaFisicaRepository implements IPessoaFisicaRepository {
                 $conditions[] = "email = :email";
                 $params[':email'] = $criteria['email'];
             }
-            if (!empty($criteria['doc'])) {
-                $conditions[] = "doc = :doc";
-                $params[':doc'] = $criteria['doc'];
+            if (!empty($criteria['cpf'])) {
+                $conditions[] = "cpf = :cpf";
+                $params[':cpf'] = $criteria['cpf'];
             }
 
             if (empty($conditions)) {
@@ -189,12 +191,10 @@ class PessoaFisicaRepository implements IPessoaFisicaRepository {
 
             $sql = "SELECT * FROM " . self::TABLE . " WHERE " . implode(' AND ', $conditions);
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute($params);          
+            $stmt->execute($params);
 
             $stmt->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, self::CLASS_NAME);
-            $result = $stmt->fetch();  
-
-            return $result; 
+            return $stmt->fetch() ?: null;
         } catch (\Throwable $th) {
             LoggerHelper::logInfo($th->getMessage());
             return null;

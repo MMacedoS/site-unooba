@@ -19,10 +19,10 @@
             foreach (array_reverse($timeline) as $item) {
                 ?>
               <article class="timeline-classic-item">
-                <p class="timeline-classic-time heading-4"><?=$item['time']?></p>
+                <p class="timeline-classic-time heading-4"><?=$item->tempo?></p>
                 <div class="timeline-classic-divider"></div>
-                <h4 class="timeline-classic-title"><?=$item['title']?></h4>
-                <p><?=$item['description']?></p>
+                <h4 class="timeline-classic-title"><?=$item->titulo?></h4>
+                <p class="text-justify"><?=$item->descricao?></p>
               </article>              
             <?  }
             ?>            

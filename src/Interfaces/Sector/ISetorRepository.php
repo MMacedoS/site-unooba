@@ -15,4 +15,6 @@ interface ISetorRepository
     public function findById(int $id);
 
     public function delete(int $id);
+
+    public function active(int $id);
 }

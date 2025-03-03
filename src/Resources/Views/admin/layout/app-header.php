@@ -10,7 +10,7 @@
                   <!-- App brand starts -->
                   <div class="app-brand">
                     <a href="/dashboard/" class="text-light d-md-block fs-1 fw-bold">
-                        <img src="<?=$_ENV['URL_PREFIX_APP']?>/Public/admin/assets/images/logo-geeduc-sem-fundo.png" class="img-fluid dash-logo" alt="Admin Dashboard" />
+                        <img src="<?=$_ENV['URL_PREFIX_APP']?>/Public/admin/assets/images/logo-geeduc-sem-fundo.png" class="img-fluid dash-logo" alt="Dashboard" />
                     </a>
                   </div>
                   <!-- App brand ends -->

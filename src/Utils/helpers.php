@@ -1,5 +1,7 @@
 <?php
 
+use App\Utils\LoggerHelper;
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }  
@@ -152,6 +154,42 @@ if (!function_exists('publicPath')) {
     }
 }
 
+if (!function_exists('dd')) {
+    function uploadFile($uploadDir, $file) {
+        try {
+            // Definir o tamanho máximo em bytes (30 MB)
+            $maxFileSize = 30 * 1024 * 1024;
+    
+            // Verifica se o upload ocorreu sem erros
+            if ($file['error'] === UPLOAD_ERR_OK) {
+                // Verifica o tipo MIME do arquivo
+                $fileType = mime_content_type($file['tmp_name']);
+                if ($fileType === 'application/pdf') {
+                    // Verifica o tamanho do arquivo
+                    if ($file['size'] <= $maxFileSize) {
+                        // Gera um nome único para o arquivo
+                        $fileName = uniqid() . '_' . basename($file['name']);
+                        $uploadPath = $_SERVER['DOCUMENT_ROOT'] . '/Public' . $uploadDir . $fileName;
+    
+                        // Move o arquivo para o diretório de upload
+                        if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
+                            return [
+                                'original_name' => $fileName, // Nome do arquivo salvo
+                                'ext_archive' => 'pdf', // Extensão fixa para PDF
+                                'path' =>  $uploadDir . '/' . $fileName // Caminho completo do arquivo
+                            ];
+                        }
+                    }
+                }
+            }
+    
+            return [];
+        } catch (\Throwable $th) {
+            LoggerHelper::logInfo($th->getMessage());
+            return [];
+        }
+    }    
+}
 
 if (!function_exists('dd')) {
     function dd($data) {

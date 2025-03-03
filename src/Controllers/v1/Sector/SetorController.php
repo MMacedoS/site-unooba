@@ -161,4 +161,21 @@ class SetorController extends Controller
             return $this->router->redirect('admin/sectors');
         }
     }
+
+    public function active(Request $request, $id)
+    {
+        $colaborator = $this->setorRepository->findByUuid($id);
+
+        if (is_null($colaborator)) {
+            return $this->router->redirect('admin/sectors');
+        }
+
+        try {
+            $this->setorRepository->active((int)$colaborator->id);
+            
+            return $this->router->redirect('admin/sectors');
+        } catch (\Exception $e) {
+            return $this->router->redirect('admin/sectors');
+        }
+    }
 }

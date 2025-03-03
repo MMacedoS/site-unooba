@@ -64,8 +64,9 @@ class UsuarioRepository implements IUsuarioRepository {
 
     public function create(array $data, bool $forceNewPassword = true)
     {   
-        $existingUser = $this->findByEmailAndSector($data['email'], $data['sector']);
-        if ($existingUser) {
+        $existingUser = $this->findByEmailAndSector($data['email']);
+        
+        if (!is_null($existingUser)) {
             return $existingUser;
         }
 
@@ -126,13 +127,13 @@ class UsuarioRepository implements IUsuarioRepository {
         }
     }
 
-    public function findByEmailAndSector(string $email, string $sector)
+    public function findByEmailAndSector(string $email)
     {
         try {
             $stmt = $this->conn->prepare(
-                "SELECT * FROM " . self::TABLE . " WHERE email = :email and acesso= :sector LIMIT 1"
+                "SELECT * FROM " . self::TABLE . " WHERE email = :email LIMIT 1"
             );
-            $stmt->execute([':email' => $email, ':sector' => $sector]);
+            $stmt->execute([':email' => $email]);
             $stmt->setFetchMode(\PDO::FETCH_CLASS, self::CLASS_NAME);
 
             return $stmt->fetch() ?: null;

@@ -7,33 +7,43 @@
                     <div class="share-buttons">
                         <ul>
                             <li class="mt-2">
-                                <button class="share-button instagram">
-                                    <i class="fab fa-instagram"></i>
-                                    <span class="button-text">Instagram</span>
-                                </button>
+                            <!-- Botão do Instagram -->
+                            <a style="color: #FFF;" href="https://www.instagram.com/unooba.bahia?igsh=MXJ1bWcwYXdxYmYzZw==" target="_blank" class="share-button instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span class="text-dark button-text" style="color: #FFF;">Instagram</span>
+                            </a>
                             </li>
                             <li class="mt-2">
-                                <button class="share-button linkedin">
-                                    <i class="fab fa-linkedin"></i>
-                                    <span class="button-text">LinkedIn</span>
-                                </button>
+                            <!-- Botão do Facebook -->
+                            <a style="color: #FFF;" href="https://www.facebook.com/unooba.bahia" target="_blank" class="share-button facebook">
+                                <i class="fab fa-facebook"></i>
+                                <span class="button-text">Facebook</span>
+                            </a>
                             </li>
                             <li class="mt-2">
-                                <button class="share-button whatsapp">
-                                    <i class="fab fa-whatsapp"></i>
-                                    <span class="button-text">WhatsApp</span>
-                                </button>
+                            <!-- Botão do WhatsApp -->
+                            <a style="color: #FFF;" href="https://wa.me/557191699255?text=Vim%20através%20do%20site%20para%20saber%20mais%20informações" target="_blank" class="share-button whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                <span class="button-text">WhatsApp</span>
+                            </a>
                             </li>
                         </ul>
-                    </div>
+                        </div>
                     
                 </div>
                 <div class="col-sm-8 col-lg-8 col-xl-8">
                     <div class="row row-50 row-xl-70">
                         <div class="col-12">
-                            <h3>About Us</h3>
-                            <p>Since 1990, our college provides students with high-quality professional education. Together with us, you will have deeper knowledge of the subjects important for your future profession.</p>
-                        </div>
+                            <? 
+                                if (!empty($paginas)) {?>
+                                <h3><?=$paginas->titulo?></h3>
+                                <p class="text-justify">
+                                <?=$paginas->descricao?>
+                                </p>    
+                            <?
+                              }
+                            ?>
+                            </div>
                     </div>
                 </div>
             </div>

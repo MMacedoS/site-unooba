@@ -29,7 +29,7 @@ class Usuario
         $user->uuid = $data['uuid'] ?? $this->generateUUID();
         $user->nome = $data['name'];
         $user->email = $data['email'];
-        $user->acesso = $data['sector'];
+        $user->acesso = $data['acesso'];
         $user->ativo = $data['active'] ?? 1;
 
         $user->senha = $forceNewPassword
@@ -46,7 +46,7 @@ class Usuario
     {
         $usuario->nome = $data['name'] ?? $usuario->nome;
         $usuario->email = $data['email'] ?? $usuario->email;
-        $usuario->acesso = $data['sector'] ?? $usuario->acesso;
+        $usuario->acesso = $data['acesso'] ?? $usuario->acesso;
         $usuario->ativo = $data['active'] ?? $usuario->ativo;
         $usuario->senha = $data['password'] ?? $usuario->senha;
         $usuario->senha = $forceNewPassword

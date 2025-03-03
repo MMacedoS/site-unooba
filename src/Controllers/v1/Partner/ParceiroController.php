@@ -180,4 +180,21 @@ class ParceiroController extends Controller
         
         return $this->router->redirect('admin/partners');
     }
+
+    public function active(Request $request, $id)
+    {
+        $colaborator = $this->parceiroRepository->findByUuid($id);
+
+        if (is_null($colaborator)) {
+            return $this->router->redirect('admin/partners');
+        }
+
+        try {
+            $this->parceiroRepository->active((int)$colaborator->id);
+            
+            return $this->router->redirect('admin/partners');
+        } catch (\Exception $e) {
+            return $this->router->redirect('admin/partners');
+        }
+    }
 }

@@ -11,7 +11,7 @@
 </div>
 
 <?php
-    require_once ('pages/about/page-about-services.php');
-    require_once ('pages/about/page-about-history.php');
+    require_once ('pages/about/page-about-video.php');
+    require_once ('pages/about/page-accordion.php');
 ?>      
 </div>

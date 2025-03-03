@@ -147,11 +147,26 @@
                                                         <i class="icon-edit fs-5"></i>
                                                     </div>
                                                 </a>
-                                                <button class="btn btn-outline btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal_<?=$setor->uuid?>">                                                     
-                                                    <div class="border p-2 rounded-3">
-                                                        <span class="fs-5 text-danger icon-delete1"></span>
-                                                    </div>
-                                                </button>                                                
+                                                <? 
+                                                    if ($setor->ativo == 1) { ?>                                                       
+                                                        <button class="btn btn-outline btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal_<?=$setor->uuid?>">                                                     
+                                                            <div class="border p-2 rounded-3">
+                                                                <span class="fs-5 text-danger icon-delete1"></span>
+                                                            </div>
+                                                        </button>    
+                                                <?  
+                                                    }
+                                                ?>    
+                                                <? 
+                                                    if ($setor->ativo == 0) { ?>
+                                                       <a class="btn btn-outline btn-sm" href="\admin\sector\<?=$setor->uuid?>\active">                                                     
+                                                            <div class="border p-2 rounded-3">
+                                                                <span class="fs-5 text-success icon-check-circle"></span>
+                                                            </div>
+                                                        </a>
+                                                <?  
+                                                    }
+                                                ?>                                                
                                             </div>
                                             <div class="d-block d-xl-none d-lg-none d-md-none dropdown ms-3">
                                                 <a class="dropdown-toggle d-flex py-2 align-items-center text-decoration-none"
@@ -164,12 +179,27 @@
                                                             <div class="border p-2 rounded-3">
                                                                 <i class="icon-edit fs-5"></i>
                                                             </div>
-                                                        </a>
-                                                        <button class="btn btn-outline btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal_<?=$setor->uuid?>">                                                     
-                                                            <div class="border p-2 rounded-3">
-                                                                <span class="fs-5 text-danger icon-delete1"></span>
-                                                            </div>
-                                                        </button> 
+                                                        </a>                                                        
+                                                        <? 
+                                                            if ($setor->ativo == 1) { ?>                                                       
+                                                                <button class="btn btn-outline btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal_<?=$setor->uuid?>">                                                     
+                                                                    <div class="border p-2 rounded-3">
+                                                                        <span class="fs-5 text-danger icon-delete1"></span>
+                                                                    </div>
+                                                                </button>    
+                                                        <?  
+                                                            }
+                                                        ?>    
+                                                        <? 
+                                                            if ($setor->ativo == 0) { ?>
+                                                            <a class="btn btn-outline btn-sm" href="\admin\sector\<?=$setor->uuid?>\active">                                                     
+                                                                    <div class="border p-2 rounded-3">
+                                                                        <span class="fs-5 text-success icon-check-circle"></span>
+                                                                    </div>
+                                                                </a>
+                                                        <?  
+                                                            }
+                                                        ?>  
                                                     </div>
                                                 </div>
                                             </div>

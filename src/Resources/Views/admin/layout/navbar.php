@@ -32,18 +32,23 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item current-page" href="admin/slides">
+                                    <a class="dropdown-item current-page" href="/admin/slides">
                                         <span>Slide</span>
                                     </a>
                                 </li>                                
                                 <li>
-                                    <a class="dropdown-item current-page" href="admin/about">
-                                        <span>Sobre</span>
+                                    <a class="dropdown-item current-page" href="/admin/paginas">
+                                        <span>Pagina</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item current-page" href="admin/line">
+                                    <a class="dropdown-item current-page" href="/admin/linhas">
                                         <span>Linha do Tempo</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item current-page" href="/admin/documentos">
+                                        <span>Documentos</span>
                                     </a>
                                 </li>
                             </ul>
@@ -59,12 +64,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item current-page" href="/admin/partner">
+                                    <a class="dropdown-item current-page" href="/admin/partners">
                                         <span>Parceiros</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item current-page" href="/admin/colaborator">
+                                    <a class="dropdown-item current-page" href="/admin/colaborators">
                                         <span>Colaboradores</span>
                                     </a>
                                 </li>

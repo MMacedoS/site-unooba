@@ -4625,7 +4625,7 @@ a.thumbnail-thin {
 .breadcrumbs-custom {
 	position: relative;
 	overflow: hidden;
-	background: url("../images/breadcrumbs-bg.jpg") center;
+	background: url("../images/girl-2605526_1280.jpg") center;
 	background-size: cover;
 }
 
@@ -8895,7 +8895,7 @@ html.tablet .ui-to-top {
 	top: -56px;
 	bottom: -56px;
 	z-index: 1079;
-	width: 270px;
+	width: 9rem;
 	padding: 112px 0 81px;
 	overflow-y: auto;
 	overflow-x: hidden;
@@ -14439,4 +14439,13 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 	.slick-slider-1 .carousel-child {
 		padding-bottom: 80px;
 	}
+}
+
+.h-15-rem {
+    height: 15rem !important;
+}
+
+.img-article-total {
+    height: 100% !important;
+    border-radius: 50% !important;
 }

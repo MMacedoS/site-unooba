@@ -17,4 +17,6 @@ interface IParceiroRepository
     public function delete(int $id);
 
     public function updatePhoto($file, $dir, $id_user);
+
+    public function active(int $id);
 }
