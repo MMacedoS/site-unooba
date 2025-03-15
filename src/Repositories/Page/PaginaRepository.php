@@ -86,6 +86,7 @@ class PaginaRepository implements IPaginaRepository
             $create = $stmt->execute([
                 ':uuid' => $slide->uuid,
                 ':title' => $slide->titulo,
+                ':description' => $slide->descricao,
                 ':tipo' => $slide->tipo,
                 ':link' => $slide->link_video
             ]);
