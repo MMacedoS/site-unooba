@@ -4,7 +4,7 @@ namespace App\Controllers\v1\Document;
 
 use App\Controllers\Controller;
 use App\Interfaces\Document\IDocumentoRepository;
-use App\Repositories\File\ArquivoRepository;
+use App\Interfaces\File\IArquivoRepository;
 use App\Request\Request;
 use App\Utils\Paginator;
 use App\Utils\Validator;
@@ -12,11 +12,13 @@ use App\Utils\Validator;
 class DocumentoController extends Controller 
 {
     protected $documentoRepository;
+    protected $arquivoRepository;
 
-    public function __construct(IDocumentoRepository $documentoRepository)
+    public function __construct(IDocumentoRepository $documentoRepository, IArquivoRepository $arquivoRepository)
     {
         parent::__construct();  
         $this->documentoRepository = $documentoRepository;
+        $this->arquivoRepository = $arquivoRepository;
     }
 
     public function index(Request $request) 
@@ -107,7 +109,8 @@ class DocumentoController extends Controller
 
     public function edit(Request $request, $id)
     {
-        $document = $this->documentoRepository->findByUuid($id);
+        $document = (array) $this->documentoRepository->findByUuid($id);
+        $document['arquivo_name'] = $this->arquivoRepository->findById((int)$document['arquivo_id']);
 
         if (is_null($document)) {
             return $this->router->redirect('admin/documentos');
@@ -115,7 +118,7 @@ class DocumentoController extends Controller
 
         return $this->router->view('admin/document/edit', [
             'active' => 'site',
-            'document' => $document,
+            'documento' => $document,
         ]);
     }
 
