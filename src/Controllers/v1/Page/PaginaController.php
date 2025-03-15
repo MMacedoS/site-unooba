@@ -36,7 +36,8 @@ class PaginaController extends Controller
                 'paginas' => $paginatedBoards,
                 'links' => $paginator->links(),
                 'page' => $params['page'] ?? null,
-                'situation' => $params['situation'] ?? null
+                'situation' => $params['situation'] ?? null,
+                'title' => $params['title'] ?? null
             ]
         ); 
     }

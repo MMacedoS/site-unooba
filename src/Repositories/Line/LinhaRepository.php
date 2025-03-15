@@ -31,10 +31,10 @@ class LinhaRepository implements ILinhaRepository
         $bindings = [];
     
         if (isset($params['title'])) {
-            $conditions[] = "titulo = :title";
-            $bindings[':title'] = $params['title'];
+            $conditions[] = "titulo LIKE :title";
+            $bindings[':title'] = "%{$params['title']}%";
         }
-    
+        
         if (isset($params['active'])) {
             $conditions[] = "ativo = :ativo";
             $bindings[':ativo'] = $params['active'];

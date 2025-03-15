@@ -45,10 +45,10 @@ class ColaboradorRepository implements IColaboradorRepository
 
         $conditions = [];
         $bindings = [];
-
-        if (isset($params['name'])) {
-            $conditions[] = "pf.nome = :nome";
-            $bindings[':nome'] = $params['name'];
+      
+        if (isset($params['colaborator'])) {
+            $conditions[] = "pf.nome LIKE :nome";
+            $bindings[':nome'] = "%{$params['colaborator']}%";
         }
 
         if (isset($params['active'])) {

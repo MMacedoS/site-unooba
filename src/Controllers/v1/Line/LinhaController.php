@@ -36,7 +36,8 @@ class LinhaController extends Controller
                 'linhas' => $paginatedBoards,
                 'links' => $paginator->links(),
                 'line' => $params['line'] ?? null,
-                'situation' => $params['situation'] ?? null
+                'situation' => $params['situation'] ?? null,
+                'title' => $params['title'] ?? null,
             ]
         ); 
     }

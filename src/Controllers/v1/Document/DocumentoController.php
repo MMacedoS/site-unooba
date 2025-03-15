@@ -37,7 +37,8 @@ class DocumentoController extends Controller
                 'documentos' => $paginatedBoards,
                 'links' => $paginator->links(),
                 'document' => $params['document'] ?? null,
-                'situation' => $params['situation'] ?? null
+                'situation' => $params['situation'] ?? null,
+                'documento' => $params['documento'] ?? null
             ]
         ); 
     }

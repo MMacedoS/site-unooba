@@ -36,7 +36,8 @@ class SlideController extends Controller
                 'slides' => $paginatedBoards,
                 'links' => $paginator->links(),
                 'slide' => $params['slide'] ?? null,
-                'situation' => $params['situation'] ?? null
+                'situation' => $params['situation'] ?? null,
+                'title' => $params['title'] ?? null
             ]
         ); 
     }
