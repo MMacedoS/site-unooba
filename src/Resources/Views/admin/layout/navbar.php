@@ -38,7 +38,7 @@
                                 </li>                                
                                 <li>
                                     <a class="dropdown-item current-page" href="/admin/paginas">
-                                        <span>Pagina</span>
+                                        <span>Página</span>
                                     </a>
                                 </li>
                                 <li>
