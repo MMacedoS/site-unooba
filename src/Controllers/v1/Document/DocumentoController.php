@@ -33,7 +33,7 @@ class DocumentoController extends Controller
         return $this->router->view(
             'admin/document/index', 
             [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'documentos' => $paginatedBoards,
                 'links' => $paginator->links(),
                 'document' => $params['document'] ?? null,
@@ -46,7 +46,7 @@ class DocumentoController extends Controller
     public function create(Request $request)
     {
         return $this->router->view('admin/document/create', [
-            'active' => 'cadastro',
+            'active' => 'site',
         ]);
     }
 
@@ -62,7 +62,7 @@ class DocumentoController extends Controller
 
         if(!$validator->validate($rules)){
             return $this->router->view('admin/document/create', [
-                'active' => 'cadastro', 
+                'active' => 'site', 
                 'errors' => $validator->getErrors()
             ]);
         }
@@ -79,7 +79,7 @@ class DocumentoController extends Controller
 
                 if (is_null($file)) {
                     return $this->router->view('admin/document/create', [
-                        'active' => 'cadastro', 
+                        'active' => 'site', 
                         'errors' => "==erros"
                     ]);
                 }
@@ -91,7 +91,7 @@ class DocumentoController extends Controller
 
             if(is_null($create)) {
                 return $this->router->view('admin/document/create', [
-                    'active' => 'cadastro', 
+                    'active' => 'site', 
                     'errors' => "==erros"
                 ]);
             }
@@ -99,7 +99,7 @@ class DocumentoController extends Controller
             return $this->router->redirect('admin/documentos');
         } catch (\Exception $e) {
             return $this->router->view('admin/document/create', [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'error' => 'Erro ao criar o documento: ' . $e->getMessage(),
             ]);
         }
@@ -114,7 +114,7 @@ class DocumentoController extends Controller
         }
 
         return $this->router->view('admin/document/edit', [
-            'active' => 'cadastro',
+            'active' => 'site',
             'document' => $document,
         ]);
     }
@@ -137,7 +137,7 @@ class DocumentoController extends Controller
 
         if(!$validator->validate($rules)){
             return $this->router->view('admin/document/create', [
-                'active' => 'cadastro', 
+                'active' => 'site', 
                 'errors' => $validator->getErrors()
             ]);
         }
@@ -148,7 +148,7 @@ class DocumentoController extends Controller
 
             if(is_null($update)) {
                 return $this->router->view('admin/document/edit', [
-                    'active' => 'cadastro', 
+                    'active' => 'site', 
                     'errors' => "==erros",
                     'document' => $document
                 ]);
@@ -157,7 +157,7 @@ class DocumentoController extends Controller
             return $this->router->redirect('admin/documents');
         } catch (\Exception $e) {
             return $this->router->view('admin/document/edit', [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'error' => 'Erro ao criar o document: ' . $e->getMessage(),
                 'document' => $document
             ]);

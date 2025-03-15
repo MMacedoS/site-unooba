@@ -45,7 +45,7 @@ class LinhaController extends Controller
     public function create(Request $request)
     {
         return $this->router->view('admin/line/create', [
-            'active' => 'cadastro',
+            'active' => 'site',
         ]);
     }
 
@@ -64,7 +64,7 @@ class LinhaController extends Controller
 
         if(!$validator->validate($rules)){
             return $this->router->view('admin/line/create', [
-                'active' => 'cadastro', 
+                'active' => 'site', 
                 'errors' => $validator->getErrors()
             ]);
         }
@@ -76,7 +76,7 @@ class LinhaController extends Controller
 
             if(is_null($create)) {
                 return $this->router->view('admin/line/create', [
-                    'active' => 'cadastro', 
+                    'active' => 'site', 
                     'errors' => "==erros"
                 ]);
             }
@@ -84,7 +84,7 @@ class LinhaController extends Controller
             return $this->router->redirect('admin/linhas');
         } catch (\Exception $e) {
             return $this->router->view('admin/line/create', [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'error' => 'Erro ao criar o setor: ' . $e->getMessage(),
             ]);
         }
@@ -99,7 +99,7 @@ class LinhaController extends Controller
         }
 
         return $this->router->view('admin/line/edit', [
-            'active' => 'cadastro',
+            'active' => 'site',
             'page' => $page,
         ]);
     }
@@ -125,7 +125,7 @@ class LinhaController extends Controller
 
         if(!$validator->validate($rules)){
             return $this->router->view('admin/line/create', [
-                'active' => 'cadastro', 
+                'active' => 'site', 
                 'errors' => $validator->getErrors()
             ]);
         }
@@ -136,7 +136,7 @@ class LinhaController extends Controller
 
             if(is_null($update)) {
                 return $this->router->view('admin/line/edit', [
-                    'active' => 'cadastro', 
+                    'active' => 'site', 
                     'errors' => "==erros",
                     'page' => $page
                 ]);
@@ -145,7 +145,7 @@ class LinhaController extends Controller
             return $this->router->redirect('admin/linhas');
         } catch (\Exception $e) {
             return $this->router->view('admin/line/edit', [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'error' => 'Erro ao criar o page: ' . $e->getMessage(),
                 'page' => $page
             ]);

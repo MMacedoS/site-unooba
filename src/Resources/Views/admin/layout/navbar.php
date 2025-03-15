@@ -55,7 +55,7 @@
                         </li>                     
                         <li class="nav-item dropdown <?=$active === 'cadastro' ? 'active-link': ''?>">
                             <a class="nav-link dropdown-toggle" href="/dashboard" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="icon-package"></i> cadastro
+                                <i class="icon-package"></i> Cadastro
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
