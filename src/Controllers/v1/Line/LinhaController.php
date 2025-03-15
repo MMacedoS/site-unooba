@@ -37,7 +37,7 @@ class LinhaController extends Controller
                 'links' => $paginator->links(),
                 'line' => $params['line'] ?? null,
                 'situation' => $params['situation'] ?? null,
-                'title' => $params['title'] ?? null,
+                'title' => $params['title'] ?? null
             ]
         ); 
     }
@@ -93,7 +93,7 @@ class LinhaController extends Controller
     public function edit(Request $request, $id)
     {
         $page = $this->linhaRepository->findByUuid($id);
-
+        
         if (is_null($page)) {
             return $this->router->redirect('admin/linhas');
         }
@@ -107,7 +107,7 @@ class LinhaController extends Controller
     public function update(Request $request, $id)
     {
         $page = $this->linhaRepository->findByUuid($id);
-
+        
         if (!$page) {
             return $this->router->redirect('admin/linhas');
         }
