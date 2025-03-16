@@ -46,6 +46,11 @@ class PaginaRepository implements IPaginaRepository
             $conditions[] = "p.ativo = :ativo";
             $bindings[':ativo'] = $params['active'];
         }
+
+        if (isset($params['situation']) && $params['situation'] != '') {
+            $conditions[] = "ativo = :ativo";
+            $bindings[':ativo'] = $params['situation'];
+        }
     
         if (count($conditions) > 0) {
             $sql .= " WHERE " . implode(" AND ", $conditions);

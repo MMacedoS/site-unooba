@@ -5,6 +5,7 @@ namespace App\Controllers\v1\Document;
 use App\Controllers\Controller;
 use App\Interfaces\Document\IDocumentoRepository;
 use App\Interfaces\File\IArquivoRepository;
+use App\Repositories\File\ArquivoRepository;
 use App\Request\Request;
 use App\Utils\Paginator;
 use App\Utils\Validator;

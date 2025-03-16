@@ -56,6 +56,11 @@ class ColaboradorRepository implements IColaboradorRepository
             $bindings[':ativo'] = $params['active'];
         }
 
+        if (isset($params['situation']) && $params['situation'] != '') {
+            $conditions[] = "c.ativo = :ativo";
+            $bindings[':ativo'] = $params['situation'];
+        }
+
         if (count($conditions) > 0) {
             $sql .= " WHERE " . implode(" AND ", $conditions);
         }
