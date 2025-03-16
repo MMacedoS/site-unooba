@@ -149,7 +149,6 @@ class SlideController extends Controller
     public function destroy(Request $request, $id)
     {
         $sector = $this->slideRepository->findByUuid($id);
-
         if (!$sector) {
             return $this->router->redirect('admin/slides');
         }

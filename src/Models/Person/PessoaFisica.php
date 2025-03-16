@@ -20,7 +20,6 @@ class PessoaFisica {
     public ?string $nome_pai;
     public string $cpf;
     public ?string $rg;
-    public ?string $genero;
     public ?string $data_nascimento;
     public ?string $telefone;
     public $created_at;
@@ -43,7 +42,6 @@ class PessoaFisica {
         $pessoa_fisica->data_nascimento = isset($data['birthday']) ? $data['birthday'] : null;
         $pessoa_fisica->nome_mae = isset($data['mother']) ? $data['mother'] : null;
         $pessoa_fisica->nome_pai = isset($data['father']) ? $data['father'] : null;
-        $pessoa_fisica->genero = isset($data['gender']) ? $data['gender'] : null;
         $pessoa_fisica->cpf = isset($data['cpf']) ? $data['cpf'] : null;
         $pessoa_fisica->rg = isset($data['rg']) ? $data['rg'] : null;
         $pessoa_fisica->ativo = isset($data['active']) ? (int)$data['active'] : 1; // Valor padrão 1 se não existir
@@ -63,7 +61,6 @@ class PessoaFisica {
         $pessoaFisica->cpf = $data['cpf'] ?? $pessoaFisica->cpf;
         $pessoaFisica->nome_mae = $data['mother'] ?? $pessoaFisica->nome_mae;
         $pessoaFisica->nome_pai = $data['father'] ?? $pessoaFisica->nome_pai;
-        $pessoaFisica->genero = $data['gender'] ?? $pessoaFisica->genero;
         $pessoaFisica->rg = $data['rg'] ?? $pessoaFisica->rg;
         $pessoaFisica->ativo = $data['active'] ?? $pessoaFisica->ativo;
 

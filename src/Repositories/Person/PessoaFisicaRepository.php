@@ -161,6 +161,7 @@ class PessoaFisicaRepository implements IPessoaFisicaRepository {
             }
             return $this->findById($id);
         } catch (\Throwable $th) {
+            LoggerHelper::logInfo($th->getMessage());
             return null;
         } finally {          
             Database::getInstance()->closeConnection();
