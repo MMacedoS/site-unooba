@@ -48,7 +48,7 @@ class PaginaRepository implements IPaginaRepository
         }
 
         if (isset($params['situation']) && $params['situation'] != '') {
-            $conditions[] = "ativo = :ativo";
+            $conditions[] = "p.ativo = :ativo";
             $bindings[':ativo'] = $params['situation'];
         }
     

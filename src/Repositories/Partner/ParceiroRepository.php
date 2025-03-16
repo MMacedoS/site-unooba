@@ -41,12 +41,12 @@ class ParceiroRepository implements IParceiroRepository
         }
 
         if (isset($params['active'])) {
-            $conditions[] = "ativo = :ativo";
+            $conditions[] = "p.ativo = :ativo";
             $bindings[':ativo'] = $params['active'];
         }
 
         if (isset($params['situation']) && $params['situation'] != '') {
-            $conditions[] = "ativo = :ativo";
+            $conditions[] = "p.ativo = :ativo";
             $bindings[':ativo'] = $params['situation'];
         }
 

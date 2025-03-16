@@ -158,7 +158,7 @@ class DocumentoController extends Controller
                 ]);
             }
 
-            return $this->router->redirect('admin/documents');
+            return $this->router->redirect('admin/documentos');
         } catch (\Exception $e) {
             return $this->router->view('admin/document/edit', [
                 'active' => 'site',

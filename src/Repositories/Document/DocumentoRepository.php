@@ -46,7 +46,7 @@ class DocumentoRepository implements IDocumentoRepository
         }
 
         if (isset($params['situation']) && $params['situation'] != '') {
-            $conditions[] = "ativo = :ativo";
+            $conditions[] = "d.ativo = :ativo";
             $bindings[':ativo'] = $params['situation'];
         }
 
