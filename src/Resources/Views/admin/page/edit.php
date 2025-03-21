@@ -13,7 +13,7 @@
                 </li>
                 <li class="breadcrumb-item">
                     <i class="fs-3 icon-archive lh-1"></i>
-                    <a href="/admin/paginas/" class="text-decoration-none">Paginas</a>
+                    <a href="/admin/paginas/" class="text-decoration-none">Páginas</a>
                 </li>
                 <li class="breadcrumb-item">Atualizar</li>
             </ol>

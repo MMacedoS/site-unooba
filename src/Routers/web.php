@@ -52,8 +52,16 @@ $router->create('GET', '/not-found', [$notFoundController, 'index']);
 
 ////login
 $router->create('GET', "/login", [$usuarioController, 'login'], null);
-
+$router->create('GET', "/logout", [$usuarioController, 'logout'], $auth);
 $router->create('POST', "/login", [$usuarioController, 'auth'], null);
+
+$router->create('GET', '/perfil', [$usuarioController, 'profile'], $auth);
+$router->create('POST', '/upload', [$usuarioController, 'profileUploadPhoto'], $auth);
+
+$router->create('GET', '/perfil/{id}', [$usuarioController, 'profile'], $auth);
+$router->create('POST', '/upload', [$usuarioController, 'profileUploadPhoto'], $auth);
+$router->create('POST', '/perfil', [$usuarioController, 'profileUpdate'], $auth);
+$router->create('POST', '/perfil-senha', [$usuarioController, 'profilePasswordUpdate'], $auth);
 
 ///// dashboard
 $router->create('GET', "/dashboard", [$dashboardController, 'index'], $auth);

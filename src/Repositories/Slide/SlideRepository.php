@@ -34,15 +34,20 @@ class SlideRepository implements ISlideRepository
 
         $conditions = [];
         $bindings = [];
-
+        
         if (isset($params['title'])) {
-            $conditions[] = "titulo = :title";
-            $bindings[':title'] = $params['title'];
+            $conditions[] = "titulo LIKE :title";
+            $bindings[':title'] = "%{$params['title']}%";
         }
 
         if (isset($params['active'])) {
-            $conditions[] = "ativo = :ativo";
+            $conditions[] = "s.ativo = :ativo";
             $bindings[':ativo'] = $params['active'];
+        }
+
+        if (isset($params['situation']) && $params['situation'] != '') {
+            $conditions[] = "s.ativo = :ativo";
+            $bindings[':ativo'] = $params['situation'];
         }
 
         if (count($conditions) > 0) {
@@ -52,7 +57,6 @@ class SlideRepository implements ISlideRepository
         $sql .= " ORDER BY titulo ASC";
 
         $stmt = $this->conn->prepare($sql);
-
         $stmt->execute($bindings);
 
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::CLASS_NAME);  

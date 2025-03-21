@@ -67,7 +67,7 @@
                                                 name="title" 
                                                 id="title" 
                                                 value="<?= isset($title) ? $title : null ?>" 
-                                                placeholder="Busque por titulo">
+                                                placeholder="Busque por título">
                                         </div>
                                     </div>
                                 </div>

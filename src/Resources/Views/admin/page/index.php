@@ -11,7 +11,7 @@
                 <i class="icon-house_siding lh-1"></i>
                 <a href="\dashboard" class="text-decoration-none">Início</a>
             </li>
-            <li class="breadcrumb-item">Paginas</li>
+            <li class="breadcrumb-item">Páginas</li>
         </ol>
        <!-- Breadcrumb end -->
     </div>
@@ -67,7 +67,7 @@
                                                 name="title" 
                                                 id="title" 
                                                 value="<?= isset($title) ? $title : null ?>" 
-                                                placeholder="Busque por titulo">
+                                                placeholder="Busque por título">
                                         </div>
                                     </div>
                                 </div>

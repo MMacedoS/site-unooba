@@ -64,9 +64,9 @@
                                             <input 
                                                 class="form-input form-control"
                                                 type="text" 
-                                                name="partner" 
-                                                id="partner" 
-                                                value="<?= isset($partner) ? $partner : null ?>" 
+                                                name="colaborator" 
+                                                id="colaborator" 
+                                                value="<?= isset($colaborator) ? $colaborator : null ?>" 
                                                 placeholder="Busque por nome">
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <div class="d-flex flex-wrap gap-2 justify-content-end">
-                                            <a href="/parceiros" class="btn btn-secondary <?= isset($situation) || isset($partner) ? 'd-block' : 'd-none'?>">Limpar</a>
+                                            <a href="/admin/colaborators" class="btn btn-secondary <?= isset($situation) || isset($partner) ? 'd-block' : 'd-none'?>">Limpar</a>
                                             <button type="submit" class="btn btn-primary">Buscar</button>
                                         </div>
                                     </div>

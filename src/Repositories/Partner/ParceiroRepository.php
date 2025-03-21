@@ -35,14 +35,19 @@ class ParceiroRepository implements IParceiroRepository
         $conditions = [];
         $bindings = [];
 
-        if (isset($params['name'])) {
-            $conditions[] = "nome = :nome";
-            $bindings[':nome'] = $params['name'];
+        if (isset($params['partner'])) {
+            $conditions[] = "nome LIKE :nome";
+            $bindings[':nome'] = "%{$params['partner']}%";
         }
 
         if (isset($params['active'])) {
-            $conditions[] = "ativo = :ativo";
+            $conditions[] = "p.ativo = :ativo";
             $bindings[':ativo'] = $params['active'];
+        }
+
+        if (isset($params['situation']) && $params['situation'] != '') {
+            $conditions[] = "p.ativo = :ativo";
+            $bindings[':ativo'] = $params['situation'];
         }
 
         if (count($conditions) > 0) {

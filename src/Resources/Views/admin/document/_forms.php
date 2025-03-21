@@ -4,7 +4,7 @@
     <div class="card-body">
       <div class="m-0">
         <label class="form-label">Nome</label>
-        <input type="text" class="form-control" name="name" required placeholder="Digite o nome" value="<?=$partner->nome ?? ''?>" />
+        <input type="text" class="form-control" name="name" required placeholder="Digite o nome" value="<?=$documento['nome'] ?? ''?>" />
       </div>
     </div>
   </div>
@@ -16,8 +16,8 @@
       <div class="m-0">
         <label class="form-label">Situação</label>
         <select name="active" class="form-control" id="" required>
-            <option value="0" <?php if(isset($partner->ativo) && $partner->ativo == '0') { echo 'selected'; } ?>>Impedido</option>
-            <option value="1" selected <?php if(isset($partner->ativo) && $partner->ativo == '1') { echo 'selected'; } ?>>Disponivel</option>
+            <option value="0" <?php if(isset($documento['ativo']) && $documento['ativo'] == '0') { echo 'selected'; } ?>>Impedido</option>
+            <option value="1" selected <?php if(isset($documento['ativo']) && $documento['ativo'] == '1') { echo 'selected'; } ?>>Disponivel</option>
         </select>
       </div>
    </div>
@@ -29,7 +29,7 @@
     <div class="card-body">
       <div class="m-0">
         <label class="form-label">Descrição</label>
-        <input type="hidden" name="file_id" value="<?$documento->arquivo_id ?? ''?>">
+        <input type="hidden" name="file_id" value="<?php $documento['arquivo_id'] ?? ''?>">
         <input type="file" class="form-control" name="file" id="file" accept="application/pdf">
       </div>
    </div>

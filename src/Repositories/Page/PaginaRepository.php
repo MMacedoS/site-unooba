@@ -38,13 +38,18 @@ class PaginaRepository implements IPaginaRepository
         $bindings = [];
     
         if (isset($params['title'])) {
-            $conditions[] = "p.titulo = :title";
-            $bindings[':title'] = $params['title'];
+            $conditions[] = "titulo LIKE :title";
+            $bindings[':title'] = "%{$params['title']}%";
         }
     
         if (isset($params['active'])) {
             $conditions[] = "p.ativo = :ativo";
             $bindings[':ativo'] = $params['active'];
+        }
+
+        if (isset($params['situation']) && $params['situation'] != '') {
+            $conditions[] = "p.ativo = :ativo";
+            $bindings[':ativo'] = $params['situation'];
         }
     
         if (count($conditions) > 0) {
@@ -86,6 +91,7 @@ class PaginaRepository implements IPaginaRepository
             $create = $stmt->execute([
                 ':uuid' => $slide->uuid,
                 ':title' => $slide->titulo,
+                ':description' => $slide->descricao,
                 ':tipo' => $slide->tipo,
                 ':link' => $slide->link_video
             ]);

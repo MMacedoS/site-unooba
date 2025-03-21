@@ -26,7 +26,7 @@
         </div>
     </div>
     <!-- Row end -->
-    <form action="/admin/documento/<?=$documento->uuid?>" method="POST" enctype="multipart/form-data">
+    <form action="/admin/documento/<?=$documento['uuid']?>" method="POST" enctype="multipart/form-data">
         <div class="row gx-3">
             <? include_once('_forms.php');?>
         </div>

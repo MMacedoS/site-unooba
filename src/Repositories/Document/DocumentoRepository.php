@@ -35,14 +35,19 @@ class DocumentoRepository implements IDocumentoRepository
         $conditions = [];
         $bindings = [];
 
-        if (isset($params['name'])) {
-            $conditions[] = "d.nome = :nome";
-            $bindings[':nome'] = $params['name'];
+        if (isset($params['documento'])) {
+            $conditions[] = "d.nome LIKE :nome";
+            $bindings[':nome'] = "%{$params['documento']}%";
         }
 
         if (isset($params['active'])) {
             $conditions[] = "d.ativo = :ativo";
             $bindings[':ativo'] = $params['active'];
+        }
+
+        if (isset($params['situation']) && $params['situation'] != '') {
+            $conditions[] = "d.ativo = :ativo";
+            $bindings[':ativo'] = $params['situation'];
         }
 
         if (count($conditions) > 0) {

@@ -37,7 +37,7 @@
     <!-- Row start -->
 <div class="row gx-3">
     <div class="col-12">
-        <form id="disciplines-form" action="/admin/parceiros" method="GET">
+        <form id="disciplines-form" action="/admin/partners" method="GET">
             <div class="accordion mt-2" id="accordionSpecialTitle">
                 <div class="accordion-item bg-transparent">
                     <h2 class="accordion-header" id="headingSpecialTitleTwo">
@@ -92,7 +92,7 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <div class="d-flex flex-wrap gap-2 justify-content-end">
-                                            <a href="/parceiros" class="btn btn-secondary <?= isset($situation) || isset($partner) ? 'd-block' : 'd-none'?>">Limpar</a>
+                                            <a href="/admin/partners" class="btn btn-secondary <?= isset($situation) || isset($partner) ? 'd-block' : 'd-none'?>">Limpar</a>
                                             <button type="submit" class="btn btn-primary">Buscar</button>
                                         </div>
                                     </div>

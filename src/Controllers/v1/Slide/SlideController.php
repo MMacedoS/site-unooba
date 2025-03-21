@@ -36,7 +36,8 @@ class SlideController extends Controller
                 'slides' => $paginatedBoards,
                 'links' => $paginator->links(),
                 'slide' => $params['slide'] ?? null,
-                'situation' => $params['situation'] ?? null
+                'situation' => $params['situation'] ?? null,
+                'title' => $params['title'] ?? null
             ]
         ); 
     }
@@ -44,7 +45,7 @@ class SlideController extends Controller
     public function create(Request $request)
     {
         return $this->router->view('admin/slide/create', [
-            'active' => 'cadastro',
+            'active' => 'site',
         ]);
     }
 
@@ -61,7 +62,7 @@ class SlideController extends Controller
 
         if(!$validator->validate($rules)){
             return $this->router->view('admin/sector/create', [
-                'active' => 'cadastro', 
+                'active' => 'site', 
                 'errors' => $validator->getErrors()
             ]);
         }
@@ -71,7 +72,7 @@ class SlideController extends Controller
 
             if(is_null($create)) {
                 return $this->router->view('admin/slide/create', [
-                    'active' => 'cadastro', 
+                    'active' => 'site', 
                     'errors' => "==erros"
                 ]);
             }
@@ -79,7 +80,7 @@ class SlideController extends Controller
             return $this->router->redirect('admin/slides');
         } catch (\Exception $e) {
             return $this->router->view('admin/slide/create', [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'error' => 'Erro ao criar o setor: ' . $e->getMessage(),
             ]);
         }
@@ -94,7 +95,7 @@ class SlideController extends Controller
         }
 
         return $this->router->view('admin/slide/edit', [
-            'active' => 'cadastro',
+            'active' => 'site',
             'slide' => $slide,
         ]);
     }
@@ -118,7 +119,7 @@ class SlideController extends Controller
 
         if(!$validator->validate($rules)){
             return $this->router->view('admin/slide/create', [
-                'active' => 'cadastro', 
+                'active' => 'site', 
                 'errors' => $validator->getErrors()
             ]);
         }
@@ -129,7 +130,7 @@ class SlideController extends Controller
 
             if(is_null($update)) {
                 return $this->router->view('admin/slide/edit', [
-                    'active' => 'cadastro', 
+                    'active' => 'site', 
                     'errors' => "==erros",
                     'slide' => $slide
                 ]);
@@ -138,7 +139,7 @@ class SlideController extends Controller
             return $this->router->redirect('admin/slides');
         } catch (\Exception $e) {
             return $this->router->view('admin/slide/edit', [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'error' => 'Erro ao criar o slide: ' . $e->getMessage(),
                 'slide' => $slide
             ]);
@@ -148,7 +149,6 @@ class SlideController extends Controller
     public function destroy(Request $request, $id)
     {
         $sector = $this->slideRepository->findByUuid($id);
-
         if (!$sector) {
             return $this->router->redirect('admin/slides');
         }

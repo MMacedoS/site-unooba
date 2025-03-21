@@ -30,13 +30,18 @@ class SetorRepository implements ISetorRepository
         $bindings = [];
 
         if (isset($params['sector'])) {
-            $conditions[] = "nome = :setor";
-            $bindings[':setor'] = $params['sector'];
+            $conditions[] = "nome LIKE :setor";
+            $bindings[':setor'] = "%{$params['sector']}%";
         }
 
         if (isset($params['active'])) {
             $conditions[] = "ativo = :ativo";
             $bindings[':ativo'] = $params['active'];
+        }
+
+        if (isset($params['situation']) && $params['situation'] != '') {
+            $conditions[] = "ativo = :ativo";
+            $bindings[':ativo'] = $params['situation'];
         }
 
         if (count($conditions) > 0) {

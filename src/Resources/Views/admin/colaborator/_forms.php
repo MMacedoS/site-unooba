@@ -144,7 +144,7 @@
     <div class="card-body">
       <div class="m-0">
         <label class="form-label">Descricao</label>
-        <textarea name="description" rows="5" class="form-control" required id=""><?= $page->descricao ?? ''?></textarea>
+        <textarea name="description" rows="5" class="form-control" required id=""><?= $colaborador->descricao ?? ''?></textarea>
       </div>
     </div>
   </div>
@@ -154,8 +154,8 @@
     <div class="card mb-3">
         <div class="card-body">
             <div class="d-flex flex-wrap gap-2 justify-content-end">
-                <button type="submit" class="btn btn-primary">Salvar</button>
-                <a href="\admin\colaborators\" class="btn btn-secondary">Cancelar</a>
+              <a href="\admin\colaborators\" class="btn btn-secondary">Cancelar</a>
+              <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
         </div>
     </div>

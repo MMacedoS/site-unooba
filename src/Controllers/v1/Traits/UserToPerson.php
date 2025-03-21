@@ -8,7 +8,6 @@ trait UserToPerson{
     public function authUser() 
     {
         $user = $_SESSION['user']->code;
-
         $pessoaFisicaRepository = new PessoaFisicaRepository();
 
         $pessoa = $pessoaFisicaRepository->personByUserId($user);

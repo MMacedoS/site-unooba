@@ -26,7 +26,7 @@
     <div class="card-body">
       <div class="m-0">
         <label for="title">Titulo:</label>
-        <input type="text" class="form-control" id="title" name="title" value="<?=$line->titulo ?? ''?>">
+        <input type="text" class="form-control" id="title" name="title" value="<?=$page->titulo ?? ''?>">
       </div>
     </div>
   </div>

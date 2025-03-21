@@ -36,7 +36,8 @@ class LinhaController extends Controller
                 'linhas' => $paginatedBoards,
                 'links' => $paginator->links(),
                 'line' => $params['line'] ?? null,
-                'situation' => $params['situation'] ?? null
+                'situation' => $params['situation'] ?? null,
+                'title' => $params['title'] ?? null
             ]
         ); 
     }
@@ -44,7 +45,7 @@ class LinhaController extends Controller
     public function create(Request $request)
     {
         return $this->router->view('admin/line/create', [
-            'active' => 'cadastro',
+            'active' => 'site',
         ]);
     }
 
@@ -63,7 +64,7 @@ class LinhaController extends Controller
 
         if(!$validator->validate($rules)){
             return $this->router->view('admin/line/create', [
-                'active' => 'cadastro', 
+                'active' => 'site', 
                 'errors' => $validator->getErrors()
             ]);
         }
@@ -75,7 +76,7 @@ class LinhaController extends Controller
 
             if(is_null($create)) {
                 return $this->router->view('admin/line/create', [
-                    'active' => 'cadastro', 
+                    'active' => 'site', 
                     'errors' => "==erros"
                 ]);
             }
@@ -83,7 +84,7 @@ class LinhaController extends Controller
             return $this->router->redirect('admin/linhas');
         } catch (\Exception $e) {
             return $this->router->view('admin/line/create', [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'error' => 'Erro ao criar o setor: ' . $e->getMessage(),
             ]);
         }
@@ -92,13 +93,13 @@ class LinhaController extends Controller
     public function edit(Request $request, $id)
     {
         $page = $this->linhaRepository->findByUuid($id);
-
+        
         if (is_null($page)) {
             return $this->router->redirect('admin/linhas');
         }
 
         return $this->router->view('admin/line/edit', [
-            'active' => 'cadastro',
+            'active' => 'site',
             'page' => $page,
         ]);
     }
@@ -106,7 +107,7 @@ class LinhaController extends Controller
     public function update(Request $request, $id)
     {
         $page = $this->linhaRepository->findByUuid($id);
-
+        
         if (!$page) {
             return $this->router->redirect('admin/linhas');
         }
@@ -124,7 +125,7 @@ class LinhaController extends Controller
 
         if(!$validator->validate($rules)){
             return $this->router->view('admin/line/create', [
-                'active' => 'cadastro', 
+                'active' => 'site', 
                 'errors' => $validator->getErrors()
             ]);
         }
@@ -135,7 +136,7 @@ class LinhaController extends Controller
 
             if(is_null($update)) {
                 return $this->router->view('admin/line/edit', [
-                    'active' => 'cadastro', 
+                    'active' => 'site', 
                     'errors' => "==erros",
                     'page' => $page
                 ]);
@@ -144,7 +145,7 @@ class LinhaController extends Controller
             return $this->router->redirect('admin/linhas');
         } catch (\Exception $e) {
             return $this->router->view('admin/line/edit', [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'error' => 'Erro ao criar o page: ' . $e->getMessage(),
                 'page' => $page
             ]);

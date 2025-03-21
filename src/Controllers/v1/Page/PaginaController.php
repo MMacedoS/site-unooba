@@ -36,7 +36,8 @@ class PaginaController extends Controller
                 'paginas' => $paginatedBoards,
                 'links' => $paginator->links(),
                 'page' => $params['page'] ?? null,
-                'situation' => $params['situation'] ?? null
+                'situation' => $params['situation'] ?? null,
+                'title' => $params['title'] ?? null
             ]
         ); 
     }
@@ -44,7 +45,7 @@ class PaginaController extends Controller
     public function create(Request $request)
     {
         return $this->router->view('admin/page/create', [
-            'active' => 'cadastro',
+            'active' => 'site',
         ]);
     }
 
@@ -62,7 +63,7 @@ class PaginaController extends Controller
 
         if(!$validator->validate($rules)){
             return $this->router->view('admin/sector/create', [
-                'active' => 'cadastro', 
+                'active' => 'site', 
                 'errors' => $validator->getErrors()
             ]);
         }
@@ -72,7 +73,7 @@ class PaginaController extends Controller
 
             if(is_null($create)) {
                 return $this->router->view('admin/page/create', [
-                    'active' => 'cadastro', 
+                    'active' => 'site', 
                     'errors' => "==erros"
                 ]);
             }
@@ -80,7 +81,7 @@ class PaginaController extends Controller
             return $this->router->redirect('admin/paginas');
         } catch (\Exception $e) {
             return $this->router->view('admin/page/create', [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'error' => 'Erro ao criar o setor: ' . $e->getMessage(),
             ]);
         }
@@ -95,7 +96,7 @@ class PaginaController extends Controller
         }
 
         return $this->router->view('admin/page/edit', [
-            'active' => 'cadastro',
+            'active' => 'site',
             'page' => $page,
         ]);
     }
@@ -120,7 +121,7 @@ class PaginaController extends Controller
 
         if(!$validator->validate($rules)){
             return $this->router->view('admin/page/create', [
-                'active' => 'cadastro', 
+                'active' => 'site', 
                 'errors' => $validator->getErrors()
             ]);
         }
@@ -131,7 +132,7 @@ class PaginaController extends Controller
 
             if(is_null($update)) {
                 return $this->router->view('admin/page/edit', [
-                    'active' => 'cadastro', 
+                    'active' => 'site', 
                     'errors' => "==erros",
                     'page' => $page
                 ]);
@@ -140,7 +141,7 @@ class PaginaController extends Controller
             return $this->router->redirect('admin/paginas');
         } catch (\Exception $e) {
             return $this->router->view('admin/page/edit', [
-                'active' => 'cadastro',
+                'active' => 'site',
                 'error' => 'Erro ao criar o page: ' . $e->getMessage(),
                 'page' => $page
             ]);

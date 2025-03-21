@@ -48,7 +48,7 @@ class ColaboradorController extends Controller
                 'active' => 'cadastro',
                 'colaboradores' => $paginatedBoards,
                 'links' => $paginator->links(),
-                'search' => $params['search'] ?? null,
+                'colaborator' => $params['colaborator'] ?? null,
                 'situation' => $params['situation'] ?? null
             ]
         ); 
